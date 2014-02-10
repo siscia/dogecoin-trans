@@ -5,6 +5,25 @@ var application_root = __dirname,
       'user': 'dogecoinrpc',
       'pass': '2A18fXC4dY1EM24eXPDMY5C9WUPf6YDrWK5DZHVZEQaL'})
 
+/*
+ * Facilissima implementazione, user log in con dogecoin-id e password, fa deposito a noi.
+ * Noi manteniamo in memoria l'ammontare del deposito e ovviamente chi ha depositato tale sommma.
+ *
+ * Poi diamo la possibilità di creare un piccolo widget, che permette di decidere la quantità di dogecoin da donare/traferire.
+ * Dopo che l'utente clicca sul nostro widget facciamo la transazione.
+ *
+ * Chiaramente entrambi gli utenti devono essere sulla piattaforma.
+ *
+ * Un occhio alla sicurezza, non muovere più di 100 doge senza richiedere la password e l'ID per esempio.
+ *
+ * Ci teniamo 1 doge per transazione.
+ *
+ * Proporrei di implementare il tutto usando MongoDB come backend
+ * Cosi diventa banale aggiungere anche lo storico delle transazioni effettuate e altre json ammenità varie
+ *
+ * */
+
+
 var app = express();
 
 app.configure(function () {
