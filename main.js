@@ -1,6 +1,7 @@
 var application_root = __dirname,
     express = require('express'),
     path = require('path'),
+    dogeAPI = require('./API'),
     dogecoin = require('node-dogecoin')({
       'user': 'dogecoinrpc',
       'pass': '2A18fXC4dY1EM24eXPDMY5C9WUPf6YDrWK5DZHVZEQaL'})
@@ -38,7 +39,7 @@ app.post('/test', function (req, res) {
     res.send({status: "ok"});
 });
 app.get('/test', function (req, res) {
-    res.send({status: "ok"});
+    res.send({status: route.prova(2, 3)});
 });
 app.post('/donation', function (req, res) {
     var donator = req.param('from');
@@ -46,8 +47,25 @@ app.post('/donation', function (req, res) {
     var ammount = req.param('ammount');
     res.send("Donation from " + donator + " to " + receiver + " of " + ammount);
 });
-app.post('/check', function (req, res) {
-    res.send("called check account.")
+app.post('/new-user', function (req, res){
+/*
+ * Save the user psw and dogecoin wallet, psw must be hashed
+ * */
+});
+app.post('/withdraw', function (req, res){
+/*
+ * Move doge from our wallet to the user wallet, change balance
+ * */
+});
+app.post('/deposit', function (req, res){
+/*
+ * wait as soon as the deposit is confirmed and then change the balance
+ * */
+});
+app.post('/balance', function (req, res){
+/*
+ * Return the balance associate with the wallet
+ * */
 });
 
 /*
